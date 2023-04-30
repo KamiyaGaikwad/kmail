@@ -1,15 +1,35 @@
-import React, { useContext } from 'react';
-import { MailContext } from '..';
-
+import React, {useContext, useState} from 'react';
+import {MailContext} from '..';
 
 export function Inbox() {
-  const {mailsData} = useContext(MailContext);
-  return (
-    <div>
-      <h1>Inbox</h1>
-      <ul>
-        {mailsData.map(({mId,subject,content})=><li key={mId}><h1>{subject}</h1><p>{content}</p></li>)}
-      </ul>
-    </div>
-  );
+    const {mailsData} = useContext(MailContext);
+    const [filteredMails,setFilteredMails] = useState(mailsData);
+    return (
+        <div className='inbox'>
+            <fieldset className='filters-container'>
+            <legend>Filters</legend>
+              <label><input type="checkbox" />Show unread mails</label>
+              <label><input type="checkbox" />Show starred mails</label>
+            </fieldset>
+            <h3>Unread: {filteredMails.reduce((acc,{unread})=>unread?acc+=1:acc,0)}</h3>
+            <ul>
+                {mailsData.map(({mId, subject, content, isStarred,unread}) =>
+                <li key = {mId} style={{background:unread?'#F2F6FC':'none'}} className="mail-item"> 
+                    <div className='inbox-header'>
+                      <h3>Subject: {subject}</h3>
+                      <button>{isStarred? 'UnStar': 'Star'}</button>
+                    </div> 
+                    <p> {content} </p>
+                    <div className='inbox-btns-container'>
+                      <button className='view-btn'>View Details</button > 
+                      <div className='inbox-click-container'>
+                        <button>Delete</button>
+                        <button>Mark as {unread?'Read':'Unread'}</button>
+                        <button>Report Spam</button>
+                      </div> 
+                    </div>
+                 </li>)}
+            </ul>
+        </div>
+    );
 }
