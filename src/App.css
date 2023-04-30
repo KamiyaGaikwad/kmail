@@ -77,6 +77,8 @@ button{
 }
 
 /* Inbox */
+.inbox{width:100%;}
+
 .inbox-header,.inbox-btns-container{
   display: flex;
   justify-content: space-between;
