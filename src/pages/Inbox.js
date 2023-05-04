@@ -2,48 +2,45 @@ import React, {useContext, useEffect, useState} from 'react';
 import {MailContext} from '..';
 
 export function Inbox() {
-    const {mailsData} = useContext(MailContext);
-    const [filteredMails,setFilteredMails] = useState(mailsData);
-    const [appliedFilters,setAppliedFilters] = useState([]);
-    console.log(appliedFilters);
-
-    const handleappliedFilters = (filterValue) =>{!appliedFilters.includes(filterValue)?setAppliedFilters([...appliedFilters,filterValue]):setAppliedFilters(appliedFilters.filter((filterName)=>filterName !== filterValue))}
+    const {state:{appliedFilters,mails},dispatch} = useContext(MailContext);
+    const [filteredMails,setFilteredMails] = useState(mails);
 
     const handleFilters = () =>{
-      let unreadCheck = appliedFilters.includes('unread')?mailsData.filter(({unread})=>unread):mailsData;
+      let unreadCheck = appliedFilters.includes('unread')?mails.filter(({unread})=>unread):mails;
 
       let starredCheck = appliedFilters.includes('starred')?unreadCheck.filter(({isStarred})=>isStarred):unreadCheck;
 
       setFilteredMails(starredCheck);
     }
 
-    useEffect(()=>{handleFilters()},[appliedFilters])
+    useEffect(()=>{handleFilters()},[appliedFilters,mails])
 
     return (
         <div className='inbox'>
             <fieldset className='filters-container'>
             <legend>Filters</legend>
-              <label><input type="checkbox" value="unread" onChange={(e)=>handleappliedFilters(e.target.value)} />Show unread mails</label>
-              <label><input type="checkbox" value="starred" onChange={(e)=>handleappliedFilters(e.target.value)} />Show starred mails</label>
+              <label><input type="checkbox" value="unread" onChange={(e)=>{dispatch({ type: "FILTERS", payload:e.target.value })}} />Show unread mails</label>
+              <label><input type="checkbox" value="starred" onChange={(e)=>{dispatch({ type: "FILTERS", payload:e.target.value })}} />Show starred mails</label>
             </fieldset>
             <h3>Unread: {filteredMails.reduce((acc,{unread})=>unread?acc+=1:acc,0)}</h3>
             <ul>
-                {filteredMails.map(({mId, subject, content, isStarred,unread}) =>
-                <li key = {mId} style={{background:unread?'#F2F6FC':'none'}} className="mail-item"> 
+                {filteredMails.length>0?filteredMails.map((filtermail) =>
+                { const {mId, subject, content, isStarred,unread} = filtermail;
+                return <li key = {mId} style={{background:unread?'#F2F6FC':'none'}} className="mail-item"> 
                     <div className='inbox-header'>
                       <h3>Subject: {subject}</h3>
-                      <button>{isStarred? 'UnStar': 'Star'}</button>
+                      <button onClick={()=>{dispatch({ type: "STARRED", payload:mId })}}>{isStarred? 'UnStar': 'Star'}</button>
                     </div> 
                     <p> {content} </p>
                     <div className='inbox-btns-container'>
                       <button className='view-btn'>View Details</button > 
                       <div className='inbox-click-container'>
-                        <button>Delete</button>
-                        <button>Mark as {unread?'Read':'Unread'}</button>
-                        <button>Report Spam</button>
+                        <button onClick={()=>{dispatch({ type: "DELETE_MAIL", payload:filtermail })}}>Delete</button>
+                        <button onClick={()=>{dispatch({ type: "UNREAD", payload:mId })}}>Mark as {unread?'Read':'Unread'}</button>
+                        <button onClick={()=>{dispatch({ type: "MARK_AS_SPAM", payload:filtermail })}}>Report Spam</button>
                       </div> 
                     </div>
-                 </li>)}
+                 </li>}):"No Mails found"}
             </ul>
         </div>
     );

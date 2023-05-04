@@ -4,6 +4,8 @@ import {Routes,Route,NavLink} from "react-router-dom";
 import { Inbox } from './pages/Inbox';
 import { Spam } from './pages/Spam';
 import { Trash } from './pages/Trash';
+import { ErrorPage } from './pages/ErrorPage';
+import { IndividualMail } from './pages/IndividualMail';
 
 function App() {
   const getActiveStyles = ({isActive}) =>({
@@ -26,6 +28,8 @@ function App() {
           <Route path="/" element={<Inbox />} />
           <Route path="/spam" element={<Spam />} />
           <Route path="/trash" element={<Trash />} />
+          <Route path="/inbox/:id" element={<IndividualMail />} />
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </div>
     </div>
