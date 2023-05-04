@@ -16,7 +16,7 @@ KMail is a mail application built with React that emulates the functionality of 
 
 ## Live Link
 
-Check out the live version of KMail Check out the live version of KMail [here](https://kmail.netlify.app/){:target="_blank"}
+Check out the live version of KMail Check out the live version of KMail [here](https://kmail.netlify.app/)
 
 ## Dependencies
 
