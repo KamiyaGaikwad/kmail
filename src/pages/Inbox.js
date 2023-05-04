@@ -20,8 +20,8 @@ export function Inbox() {
         <div className='inbox'>
             <fieldset className='filters-container'>
             <legend>Filters</legend>
-              <label><input type="checkbox" value="unread" onChange={(e)=>{dispatch({ type: "FILTERS", payload:e.target.value })}} />Show unread mails</label>
-              <label><input type="checkbox" value="starred" onChange={(e)=>{dispatch({ type: "FILTERS", payload:e.target.value })}} />Show starred mails</label>
+              <label><input type="checkbox" checked={appliedFilters.includes("unread")} value="unread" onChange={(e)=>{dispatch({ type: "FILTERS", payload:e.target.value })}} />Show unread mails</label>
+              <label><input type="checkbox" checked={appliedFilters.includes("starred")} value="starred" onChange={(e)=>{dispatch({ type: "FILTERS", payload:e.target.value })}} />Show starred mails</label>
             </fieldset>
             <h3>Unread: {filteredMails.reduce((acc,{unread})=>unread?acc+=1:acc,0)}</h3>
             <ul>
