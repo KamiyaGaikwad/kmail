@@ -6,7 +6,7 @@ KMail is a mail application built with React that emulates the functionality of 
 
 - Three folders: Inbox, Spam, Trash.
 - Navigation through folders using React Router.
-- Loading mails in Inbox
+- Loading mails in Inbox.
 - Filters to show unread emails and starred emails.
 - Star and unstar an email.
 - Delete an email (moves it to the Trash folder).
@@ -16,7 +16,7 @@ KMail is a mail application built with React that emulates the functionality of 
 
 ## Live Link
 
-Check out the live version of KMail [here](https://kmail.netlify.app/).
+Check out the live version of KMail <a href="https://kmail.netlify.app/" target="_blank">here</a>
 
 ## Dependencies
 
