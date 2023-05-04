@@ -4,6 +4,7 @@
   --btn-red:#F54F42;
   --btn-orange:#FFAB40;
   --btn-green:#75C076;
+  --black:#000000;
 }
 
 /* Reset */
@@ -107,7 +108,9 @@ button{
 }
 
 .view-btn{
-  padding-left: 0;
+  text-decoration: none;
+  color:var(--black);
+  font-size: 14px;
 }
 
 
@@ -122,5 +125,16 @@ button{
 .trash{
   width:100%;
   display: flex;
+}
+
+/* Individual Mail */
+.individual-mail{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.individual-mail h2{
+  align-self: flex-start;
 }
 

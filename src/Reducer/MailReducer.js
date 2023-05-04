@@ -8,7 +8,6 @@ export const initialState = {
 export const MailReducer = (state, action) => {
     switch (action.type) {
       case 'GET_MAILS_DATA':
-          console.log(state)
         return { ...state,mails:action.payload }
       case 'MARK_AS_SPAM':
         return { ...state, spam: [...state.spam,action.payload],mails:state.mails.filter((mail)=>mail!==action.payload) }

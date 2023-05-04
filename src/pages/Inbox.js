@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import {MailContext} from '..';
 
 export function Inbox() {
@@ -33,7 +34,7 @@ export function Inbox() {
                     </div> 
                     <p> {content} </p>
                     <div className='inbox-btns-container'>
-                      <button className='view-btn'>View Details</button > 
+                      <Link className='view-btn' to={`/inbox/${mId}`}>View Details</Link > 
                       <div className='inbox-click-container'>
                         <button onClick={()=>{dispatch({ type: "DELETE_MAIL", payload:filtermail })}}>Delete</button>
                         <button onClick={()=>{dispatch({ type: "UNREAD", payload:mId })}}>Mark as {unread?'Read':'Unread'}</button>

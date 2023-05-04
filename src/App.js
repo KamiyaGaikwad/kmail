@@ -28,7 +28,7 @@ function App() {
           <Route path="/" element={<Inbox />} />
           <Route path="/spam" element={<Spam />} />
           <Route path="/trash" element={<Trash />} />
-          <Route path="/inbox/:id" element={<IndividualMail />} />
+          <Route path="/inbox/:mailid" element={<IndividualMail />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </div>
