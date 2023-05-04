@@ -30,6 +30,7 @@ button{
 .App {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .App-header{
@@ -40,15 +41,18 @@ button{
 .App-container{
   display: flex;
   justify-content: center;
+  padding:10px;
 }
 
 .App h1{
   align-self: center;
 }
 
+.App-header button{display: none;}
+
 /* Navbar */
 .navbar{
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -138,3 +142,15 @@ button{
   align-self: flex-start;
 }
 
+/* Media Query */
+@media only screen and (max-width: 700px) {
+  .App-header {
+    width: 0px;
+  }
+
+  .navbar{left:-200px;transition: 0.35s;background-color: #ffffff;height: fit-content;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+
+  .show{left:0;}
+
+  .App-header button{display:block;font-size:16px; border-radius: 50%;margin-bottom: 20px;position: absolute;top:-30px;}
+}
