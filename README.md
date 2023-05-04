@@ -14,6 +14,10 @@ KMail is a mail application built with React that emulates the functionality of 
 - Report an email as spam (moves it to the Spam folder).
 - View Details page for individual emails.
 
+## Live Link
+
+Check out the live version of KMail [here](https://kmail.netlify.app/).
+
 ## Dependencies
 
 - React
