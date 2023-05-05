@@ -1,3 +1,4 @@
+[![wakatime](https://wakatime.com/badge/user/96974b03-e435-4d4d-89a2-486553721b5a/project/7591f6b2-ae0b-40bf-8b4c-7bf5f201f454.svg)](https://wakatime.com/badge/user/96974b03-e435-4d4d-89a2-486553721b5a/project/7591f6b2-ae0b-40bf-8b4c-7bf5f201f454)
 # KMail
 
 KMail is a mail application built with React that emulates the functionality of Gmail.
