@@ -5,10 +5,11 @@ import {MailContext} from '..';
 
 export function IndividualMail() {
   const {mailid} = useParams();
-  const {state:{mails}} = useContext(MailContext);
+  const {state:{mails,spam,trash}} = useContext(MailContext);
   let individualMail;
-  if(mailid && mails){
-    individualMail = mails.find(({mId})=>mId === mailid);
+  if(mailid && mails && spam && trash){
+    const allMails = [...mails, ...spam, ...trash];
+    individualMail = allMails.find((mail) => mail.mId === mailid);
   }
   return (
     <>
