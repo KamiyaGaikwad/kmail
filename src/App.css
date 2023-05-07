@@ -87,9 +87,11 @@ button{
 .inbox-header,.inbox-btns-container{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap:10px;
 }
 
-.inbox .mail-item{
+.mail-item{
   border:1px solid var(--grey-border);
   padding:20px;
   border-radius: 10px;
@@ -101,6 +103,7 @@ button{
 
 .inbox-click-container button:nth-of-type(1){
   color:var(--btn-red);
+  padding-left:0;
 }
 
 .inbox-click-container button:nth-of-type(2){
@@ -142,15 +145,39 @@ button{
   align-self: flex-start;
 }
 
+.nav-mobile{display:none}
+
 /* Media Query */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
   .App-header {
     width: 0px;
   }
 
-  .navbar{left:-200px;transition: 0.35s;background-color: #ffffff;height: fit-content;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+  .App{margin-bottom:70px;}
 
-  .show{left:0;}
+  .navbar{display: none;}
 
-  .App-header button{display:block;font-size:16px; border-radius: 50%;margin-bottom: 20px;position: absolute;top:-30px;}
+  .nav-mobile{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(10px + 1.5vmin);
+  position: fixed;
+  bottom:-40px;
+  left:0;
+  width:100%;
+  padding:20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .nav-mobile a{
+    text-decoration: none;
+    margin-bottom:40px;
+    width:70px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+  }
+
 }
